@@ -54,4 +54,4 @@ typings/
 .yarn-integrity
 
 # VisualStudioCode
-.code-workspace
+*.code-workspace
