@@ -15,7 +15,8 @@ import (
 )
 
 const (
-	pg_url string = "postgres://user:123456@localhost:5432/L0"
+	pg_url   string = "postgres://user:123456@localhost:5432/L0"
+	nats_url string = "nats://localhost:4222"
 )
 
 var (
@@ -92,7 +93,7 @@ func main() {
 }
 
 func ConnectToNatsStreaming() {
-	sc, err = stan.Connect("test-cluster", "client-test1", stan.NatsURL("nats://localhost:4222"))
+	sc, err = stan.Connect("test-cluster", "client-test1", stan.NatsURL(nats_url))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to nats-streaming-server: %v\n", err)
 		return
@@ -109,7 +110,7 @@ func StartHTTP() {
 			byte, _ := json.Marshal(order)
 			fmt.Fprintf(w, string(byte))
 		} else {
-			fmt.Fprintf(w, "Order has not be found!")
+			fmt.Fprintf(w, "Order was not found!")
 		}
 	})
 	http.ListenAndServe(":3001", nil)
