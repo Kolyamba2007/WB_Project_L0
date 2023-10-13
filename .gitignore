@@ -52,3 +52,6 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+
+# VisualStudioCode
+.code-workspace
